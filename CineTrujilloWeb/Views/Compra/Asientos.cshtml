@@ -1,0 +1,96 @@
+﻿@model List<CineTrujilloWeb.Models.Asiento>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Asientos</title>
+
+    <style>
+        body {
+            font-family: Calibri;
+            background: #eef1f5;
+            text-align: center;
+        }
+
+        .sala {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .asiento {
+            width: 50px;
+            height: 50px;
+            background: #4caf50;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .ocupado {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        input {
+            display: none;
+        }
+
+            input:checked + span {
+                background: #ff9800;
+            }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #e91e63;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Selecciona tus asientos</h2>
+
+    <form method="post" action="/Compra/Comprar">
+
+        <input type="hidden" name="idFuncion" value="@ViewBag.IdFuncion" />
+
+        <div class="sala">
+
+            @foreach (var a in Model)
+            {
+                var ocupado = a.Estado == "Ocupado";
+
+                <label class="asiento @(ocupado ? "ocupado" : "")">
+
+                    @if (!ocupado)
+                    {
+                        <input type="checkbox" name="asientos" value="@a.IdAsiento" />
+                    }
+
+                    <span>@a.Numero</span>
+                </label>
+            }
+
+        </div>
+
+        <button class="btn">Comprar</button>
+
+    </form>
+
+</body>
+</html>
