@@ -1,71 +1,26 @@
 ﻿@model List<CineTrujilloWeb.Models.Funcion>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Funciones";
 }
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Funciones</title>
+<div class="funciones-page">
 
-    <style>
-        body {
-            font-family: Calibri;
-            background: #eef1f5;
-            margin: 0;
+    <h2>Selecciona Función</h2>
+
+    <div class="grid">
+        @foreach (var f in Model)
+        {
+            <div class="card">
+                <h4>Sala: @f.Sala</h4>
+                <p>@f.Horario.ToString("HH:mm")</p>
+
+                <a href="/Compra/Asientos?idFuncion=@f.IdFuncion" class="btn">
+                    Seleccionar
+                </a>
+            </div>
         }
-
-        .container {
-            padding: 30px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-
-        .btn {
-            margin-top: 10px;
-            display: inline-block;
-            padding: 10px 15px;
-            background: #4a7cff;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="container">
-        <h2>Selecciona Función</h2>
-
-        <div class="grid">
-            @foreach (var f in Model)
-            {
-                <div class="card">
-                    <h4>Sala: @f.Sala</h4>
-                    <p>@f.Horario.ToString("HH:mm")</p>
-
-                    <a href="/Compra/Asientos?idFuncion=@f.IdFuncion" class="btn">
-                        Seleccionar
-                    </a>
-                </div>
-            }
-        </div>
     </div>
 
-</body>
-</html>
+</div>

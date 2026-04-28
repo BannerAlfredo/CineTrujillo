@@ -12,10 +12,14 @@ namespace CineTrujilloWeb.Services
         }
 
         // LOGIN
-        public async Task<string> Login(object data)
+        public async Task<UsuarioResponse> Login(object data)
         {
             var response = await _http.PostAsJsonAsync("usuario/login", data);
-            return await response.Content.ReadAsStringAsync();
+
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            return await response.Content.ReadFromJsonAsync<UsuarioResponse>();
         }
 
         // REGISTER
@@ -48,6 +52,12 @@ namespace CineTrujilloWeb.Services
         {
             var response = await _http.PostAsJsonAsync("Compras", data);
             return await response.Content.ReadAsStringAsync();
+        }
+
+        //  COMPRAS POR USUARIO
+        public async Task<List<CompraViewModel>> GetMisCompras(int idUsuario)
+        {
+            return await _http.GetFromJsonAsync<List<CompraViewModel>>($"compras/usuario/{idUsuario}");
         }
     }
 }

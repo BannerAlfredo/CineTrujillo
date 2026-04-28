@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CineTrujilloAPI.Migrations
 {
     [DbContext(typeof(CineDbContext))]
-    [Migration("20260422044145_Inicial")]
-    partial class Inicial
+    [Migration("20260427051430_api")]
+    partial class api
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

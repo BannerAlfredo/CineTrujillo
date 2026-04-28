@@ -1,0 +1,92 @@
+﻿@model List<CineTrujilloWeb.Models.CompraViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Mis Compras";
+}
+
+<style>
+    .compras-page {
+        padding: 10px;
+    }
+
+    .tabla {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .card-compra {
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+        .card-compra:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-compra h4 {
+            margin-bottom: 10px;
+            color: #4a7cff;
+        }
+
+    .badge {
+        padding: 4px 10px;
+        border-radius: 20px;
+        color: white;
+        font-size: 12px;
+    }
+
+    .confirmada {
+        background: #4caf50;
+    }
+
+    .pendiente {
+        background: #ff9800;
+    }
+
+    .cancelada {
+        background: #f44336;
+    }
+
+    .asientos {
+        margin-top: 10px;
+        font-size: 13px;
+        color: #555;
+    }
+</style>
+
+<div class="compras-page">
+
+    <h2>🎟 Mis Compras</h2>
+
+    <div class="tabla">
+
+        @foreach (var c in Model)
+        {
+            <div class="card-compra">
+                <h4>COMPRA #@c.IdCompra</h4>
+
+                <p><strong>Fecha:</strong> @c.Fecha.ToString("dd/MM/yyyy HH:mm")</p>
+                <p><strong>Total:</strong> S/ @c.Total</p>
+
+                <p>
+                    <strong>Estado:</strong>
+                    <span class="badge @(c.Estado == "Confirmada" ? "confirmada" : c.Estado == "Pendiente" ? "pendiente" : "cancelada")">
+                        @c.Estado
+                    </span>
+                </p>
+
+                <div class="asientos">
+                    <strong>Asientos:</strong><br />
+                    @string.Join(", ", c.Asientos)
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>

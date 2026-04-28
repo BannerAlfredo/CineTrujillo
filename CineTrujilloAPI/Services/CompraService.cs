@@ -67,6 +67,40 @@ namespace CineTrujilloAPI.Services
             await transaction.CommitAsync();
 
             return "Compra exitosa";
-             }
-         }   
+        }
+        public async Task<List<CompraResponseDto>> ObtenerCompras(int idUsuario)
+        {
+            var compras = await _context.Compras
+                .Where(c => c.IdUsuario == idUsuario)
+                .OrderByDescending(c => c.Fecha)
+                .ToListAsync();
+
+            var resultado = new List<CompraResponseDto>();
+
+            foreach (var compra in compras)
+            {
+                var detalles = await _context.DetalleCompras
+                    .Where(d => d.IdCompra == compra.IdCompra)
+                    .ToListAsync();
+
+                var asientosIds = detalles.Select(d => d.IdAsiento).ToList();
+
+                var asientos = await _context.Asientos
+                    .Where(a => asientosIds.Contains(a.IdAsiento))
+                    .Select(a => a.Numero)
+                    .ToListAsync();
+
+                resultado.Add(new CompraResponseDto
+                {
+                    IdCompra = compra.IdCompra,
+                    Fecha = compra.Fecha,
+                    Total = compra.Total,
+                    Estado = compra.Estado,
+                    Asientos = asientos
+                });
+            }
+
+            return resultado;
+        }
     }
+}

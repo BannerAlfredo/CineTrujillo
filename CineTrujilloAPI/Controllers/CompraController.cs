@@ -29,5 +29,11 @@ namespace CineTrujilloAPI.Controllers
 
             return Ok(new { mensaje = result });
         }
+        [HttpGet("usuario/{idUsuario}")]
+        public async Task<IActionResult> ObtenerPorUsuario(int idUsuario)
+        {
+            var data = await _service.ObtenerCompras(idUsuario);
+            return Ok(data);
+        }
     }
 }

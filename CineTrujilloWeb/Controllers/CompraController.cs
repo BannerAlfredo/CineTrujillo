@@ -43,4 +43,12 @@ public class CompraController : Controller
 
         return RedirectToAction("Cartelera", "Home");
     }
+    public async Task<IActionResult> MisCompras()
+    {
+        int idUsuario = int.Parse(HttpContext.Session.GetString("IdUsuario"));
+
+        var compras = await _api.GetMisCompras(idUsuario);
+
+        return View(compras);
+    }
 }

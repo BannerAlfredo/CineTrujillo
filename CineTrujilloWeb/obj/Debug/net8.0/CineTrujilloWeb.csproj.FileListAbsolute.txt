@@ -31,3 +31,4 @@ C:\Users\USUARIO\Desktop\Proyecto ADSW\Sistema de Venta de Entrada de Cine\CineT
 C:\Users\USUARIO\Desktop\Proyecto ADSW\Sistema de Venta de Entrada de Cine\CineTrujilloWeb\obj\Debug\net8.0\CineTrujilloWeb.pdb
 C:\Users\USUARIO\Desktop\Proyecto ADSW\Sistema de Venta de Entrada de Cine\CineTrujilloWeb\obj\Debug\net8.0\CineTrujilloWeb.genruntimeconfig.cache
 C:\Users\USUARIO\Desktop\Proyecto ADSW\Sistema de Venta de Entrada de Cine\CineTrujilloWeb\obj\Debug\net8.0\ref\CineTrujilloWeb.dll
+C:\Users\USUARIO\Desktop\Proyecto ADSW\Sistema de Venta de Entrada de Cine\CineTrujilloWeb\obj\Debug\net8.0\CineTrujilloWeb.sourcelink.json

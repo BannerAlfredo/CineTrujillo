@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CineTrujilloAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class api : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

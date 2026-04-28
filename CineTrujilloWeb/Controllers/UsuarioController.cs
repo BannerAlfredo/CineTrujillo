@@ -19,15 +19,18 @@ namespace CineTrujilloWeb.Controllers
         }
 
         [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Login(UsuarioLoginModel model)
         {
-            var result = await _api.Login(model);
+            var user = await _api.Login(model);
 
-            if (result.Contains("Unauthorized"))
+            if (user == null)
             {
                 ViewBag.Error = "Credenciales incorrectas";
                 return View();
             }
+
+            HttpContext.Session.SetString("IdUsuario", user.IdUsuario.ToString());
 
             return RedirectToAction("Cartelera", "Home");
         }
