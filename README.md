@@ -1,9 +1,8 @@
 # 🎥 CineTrujillo – Sistema de Venta de Entradas de Cine
 
-CineTrujillo es un sistema web desarrollado con ASP.NET Core MVC, diseñado para la gestión y venta de entradas de cine en línea.
-Permite a los usuarios explorar películas, seleccionar funciones, elegir asientos y realizar compras de forma rápida y sencilla.
+CineTrujillo es una solución web completa para la venta de entradas de cine, desarrollada con ASP.NET Core MVC + Web API + MySQL.
 
-Este proyecto está orientado a aprendizaje, práctica profesional y uso real, aplicando arquitectura MVC, consumo de API REST y conexión a base de datos relacional.
+El sistema permite a los usuarios explorar películas, seleccionar funciones, elegir asientos en tiempo real y realizar compras con confirmación tipo ticket.
 
 ---
 
@@ -17,6 +16,14 @@ Este proyecto está orientado a aprendizaje, práctica profesional y uso real, a
 - 🎟️ Confirmación de compra tipo ticket / FALATA IMPLEMENTAR
 - 📊 Historial de compras del usuario
 - 🎨 Interfaz moderna y responsive
+- ⚡ Consumo de API REST
+
+---
+
+🧱 Arquitectura del Sistema
+
+[ Cliente Web (MVC) ]  --->  [ API REST ]  --->  [ Base de Datos MySQL ]
+        (Views)               (Controllers)         (Entity Framework)
 
 ---
 
@@ -37,35 +44,68 @@ Este proyecto está orientado a aprendizaje, práctica profesional y uso real, a
 
 ## 📂 Estructura del Proyecto
 
+🔹 🔧 API – CineTrujilloAPI
+
 ```
-VetCenter/
+CineTrujilloAPI/
 │── Controllers/
-│   ├── CitaController.cs
-│   ├── ClienteController.cs
-│   ├── MascotaController.cs
-│   ├── MedicamentoController.cs
-│   ├── UsuarioController.cs
-│   └── PanelController.cs
+│   ├── AsientosController.cs
+│   ├── CompraController.cs
+│   ├── FuncionesController.cs
+│   ├── PeliculaController.cs
+│   └── UsuarioController.cs
+│
+│── Data/
+│   └── CineDbContext.cs
+│
+│── DTOs/
+│   ├── CompraDto.cs
+│   ├── CompraResponseDto.cs
+│   ├── LoginDto.cs
+│   ├── PeliculaDto.cs
+│   └── RegistroDto.cs
 │
 │── Models/
-│   ├── AppDbContext.cs
-│   ├── Cita.cs
-│   ├── Cliente.cs
-│   ├── Mascota.cs
-│   ├── Medicamento.cs
+│   ├── Asiento.cs
+│   ├── Compra.cs
+│   ├── DetalleCompra.cs
+│   ├── Funcion.cs
+│   ├── Pelicula.cs
 │   └── Usuario.cs
 │
-│── Views/
-│   ├── Cita/
-│   ├── Cliente/
-│   ├── Mascota/
-│   ├── Medicamento/
-│   ├── Panel/
-│   └── Shared/
+│── Services/
+│   ├── CompraService.cs
+│   ├── PeliculaService.cs
+│   └── UsuarioService.cs
+
+```
+🔹 🌐 Web – CineTrujilloWeb
+
+```
+CineTrujilloWeb/
+│── Controllers/
+│   ├── HomeController.cs
+│   ├── CompraController.cs
+│   └── UsuarioController.cs
 │
-│── wwwroot/
-│── appsettings.json
-└── Program.cs
+│── Models/
+│   ├── Asiento.cs
+│   ├── CompraDto.cs
+│   ├── CompraViewModel.cs
+│   ├── Funcion.cs
+│   ├── Pelicula.cs
+│   ├── UsuarioLoginModel.cs
+│   ├── UsuarioRegisterModel.cs
+│   └── UsuarioResponse.cs
+│
+│── Services/
+│   └── ApiService.cs
+│
+│── Views/
+│   ├── Home/
+│   ├── Compra/
+│   ├── Usuario/
+│   └── Shared/
 
 ```
 
@@ -112,7 +152,17 @@ Ejecutamos nuevo perfil
 ```
 
 ---
+🔄 Flujo del Sistema
 
+- Usuario inicia sesión
+- Selecciona película
+- Elige función
+- Selecciona asientos
+- Confirma compra
+- Se genera la compra
+- Visualiza en "Mis Compras"
+
+---
 ## 📈 Mejoras futuras:
 - Detalle de peliculas
 - Ticket de compra
