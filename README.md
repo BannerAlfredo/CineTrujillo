@@ -1,22 +1,22 @@
-# 🎥 CineTrujillo – Venta de Entradas para el CIne en ASP.NET Core
+# 🎥 CineTrujillo – Sistema de Venta de Entradas de Cine
 
-VetCenter es un **sistema web para la gestión integral de una veterinaria**, desarrollado con **ASP.NET Core MVC**, **MySQL** y **Bootstrap**.  
-Permite administrar citas, clientes, mascotas, medicamentos, usuarios y reportes desde un panel administrativo moderno y funcional.
+CineTrujillo es un sistema web desarrollado con ASP.NET Core MVC, diseñado para la gestión y venta de entradas de cine en línea.
+Permite a los usuarios explorar películas, seleccionar funciones, elegir asientos y realizar compras de forma rápida y sencilla.
 
-Este proyecto está orientado a **aprendizaje, práctica profesional y uso real**, aplicando buenas prácticas, arquitectura MVC y conexión a base de datos relacional.
+Este proyecto está orientado a aprendizaje, práctica profesional y uso real, aplicando arquitectura MVC, consumo de API REST y conexión a base de datos relacional.
 
 ---
 
 ## 🚀 Características Principales
 
-- 📅 Gestión de citas veterinarias
-- 👤 Administración de clientes
-- 🐶 Registro y control de mascotas
-- 💊 Gestión de medicamentos
-- 👨‍⚕️ Control de usuarios y roles
-- 🔐 Autenticación y cierre de sesión
-- 🖥️ Panel administrativo
-- 🎨 Interfaz responsive con Bootstrap
+- 🎬 Visualización de cartelera de películas
+- 🕒 Selección de funciones (horario y sala)
+- 💺 Selección interactiva de asientos
+- 🛒 Proceso de compra paso a paso
+- 🔐 Inicio de sesión de usuarios
+- 🎟️ Confirmación de compra tipo ticket / FALATA IMPLEMENTAR
+- 📊 Historial de compras del usuario
+- 🎨 Interfaz moderna y responsive
 
 ---
 
@@ -25,10 +25,11 @@ Este proyecto está orientado a **aprendizaje, práctica profesional y uso real*
 | -------------------- | ------------------------ |
 | Lenguaje Backend     | C#                       |
 | Framework            | ASP.NET Core MVC         |
-| Base de Datos        | MySQL                    |
+| API                  | ASP.NET Core Web API     |
+| Base de Datos        | SqlServer                |
 | ORM                  | Entity Framework Core    |
 | Frontend             | HTML5, CSS3, Bootstrap 5 |
-| Arquitectura         | MVC                      |
+| Arquitectura         | MVC + API REST           |
 | IDE                  | Visual Studio 2022       |
 | Control de Versiones | Git & GitHub             |
 
