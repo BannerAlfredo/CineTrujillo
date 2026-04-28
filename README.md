@@ -73,31 +73,44 @@ VetCenter/
 
 ## ⚙️ Configuración del Proyecto
 
-### 1️⃣ Clonar el repositorio
+### 1 Clonar el repositorio
 ```
 https://github.com/BannerAlfredo/CineTrujillo.git
 ```
 
-### 2️⃣ Configurar la base de datos
+### 2. Configura la cadena de conexión
 
-Editar el archivo `appsettings.json:`
+Edita el archivo `appsettings.json` en `CineTrujilloApi`:
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "server=localhost;database=vetcenter;user=root;password=;"
-}
+  "DefaulConnection": "Data Source=BANNER;Initial Catalog=My_Firts_Api;Integrated Security=True;Pooling=False;Encrypt=False;Trust Server Certificate=False"
+},
 ```
 
-### 3️⃣ Restaurar dependencias
-```
-dotnet restore
+### 3. Aplica las migraciones
+
+```bash
+cd CineTrujilloApi
+dotnet ef database update
 ```
 
-### 4️⃣ Ejecutar el proyecto
-```
-dotnet run
+### 4. Ejecuta la aplicación
+
+```bash
+Ejecutamos nuevo perfil
 ```
 
+### 4. Crear  Actualizar la base de datos
+SQL: Creamos la base de datos
+```bash
+create database CineTrujilloDB
+```
+
+VISUAL STUDIO 2022: Ingresamos a Herramientas, administrador de paquetes NuGut, Consola de Administrador de paquetes luego ingresamos
+```bash
+Update-Database
+```
 ---
 
 ## 📈 Mejoras futuras:
