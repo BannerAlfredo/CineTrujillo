@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .ticket {
+        width: 400px;
+        margin: 30px auto;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    .line {
+        border-top: 1px dashed #ccc;
+        margin: 15px 0;
+    }
+</style>
+
+<div class="ticket">
+
+    <h2>🎟 Ticket de Compra</h2>
+
+    <div class="line"></div>
+
+    <p><strong>Fecha:</strong> @DateTime.Now.ToString("dd/MM/yyyy HH:mm")</p>
+    <p><strong>Asientos:</strong> @TempData["Asientos"]</p>
+    <p><strong>Total:</strong> S/ @TempData["Total"]</p>
+
+    <div class="line"></div>
+
+    <p>¡Gracias por tu compra! 🍿</p>
+
+</div>

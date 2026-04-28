@@ -24,12 +24,20 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhXEFzaWVudG9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/USUARIO/Desktop/Proyecto ADSW/Sistema de Venta de Entrada de Cine/CineTrujilloWeb/Views/Compra/Confirmar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhXENvbmZpcm1hci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/USUARIO/Desktop/Proyecto ADSW/Sistema de Venta de Entrada de Cine/CineTrujilloWeb/Views/Compra/Funciones.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhXEZ1bmNpb25lcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/USUARIO/Desktop/Proyecto ADSW/Sistema de Venta de Entrada de Cine/CineTrujilloWeb/Views/Compra/MisCompras.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhXE1pc0NvbXByYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/USUARIO/Desktop/Proyecto ADSW/Sistema de Venta de Entrada de Cine/CineTrujilloWeb/Views/Compra/Ticket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcHJhXFRpY2tldC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/USUARIO/Desktop/Proyecto ADSW/Sistema de Venta de Entrada de Cine/CineTrujilloWeb/Views/Home/Cartelera.cshtml]

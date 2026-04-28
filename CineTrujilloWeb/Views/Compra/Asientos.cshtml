@@ -5,33 +5,264 @@
     ViewData["Title"] = "Asientos";
 }
 
-<div class="asientos-page">
+<style>
+    .cine-container {
+        display: flex;
+        gap: 30px;
+        align-items: flex-start;
+    }
 
-    <h2>Selecciona tus asientos</h2>
+    /* PANEL IZQUIERDO */
+    .panel-info {
+        width: 260px;
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        text-align: center;
+    }
 
-    <form method="post" action="/Compra/Comprar">
+        .panel-info img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
 
-        <input type="hidden" name="idFuncion" value="@ViewBag.IdFuncion" />
+        .panel-info h3 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+            font-size: 25px;
+        }
 
-        <div class="sala">
-            @foreach (var a in Model)
-            {
-                var ocupado = a.Estado == "Ocupado";
+        .panel-info p {
+            margin: 6px 0;
+            font-size: 18px;
+            color: #555;
+        }
 
-                <label class="asiento @(ocupado ? "ocupado" : "")">
+    /* SALA */
+    .sala-container {
+        flex: 1;
+        background: #f8fafc;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        text-align: center;
+    }
 
-                    @if (!ocupado)
-                    {
-                        <input type="checkbox" name="asientos" value="@a.IdAsiento" />
-                    }
+    /* TITULO */
+    .titulo {
+        font-size: 28px;
+        font-weight: bold;
+        color: #4a7cff;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+    }
 
-                    <span>@a.Numero</span>
-                </label>
-            }
-        </div>
+    /* PANTALLA */
+    .pantalla {
+        background: linear-gradient(to bottom, #e0e0e0, #cfcfcf);
+        height: 12px;
+        margin: 20px auto;
+        width: 70%;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
 
-        <button class="btn">Comprar</button>
+    /* GRID */
+    .sala {
+        display: grid;
+        grid-template-columns: repeat(10, 42px);
+        gap: 12px;
+        justify-content: center;
+        margin-top: 25px;
+    }
 
-    </form>
+    /* ASIENTOS */
+    .asiento {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 2px solid #1e88e5;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        /* HOVER */
+        .asiento:hover {
+            transform: scale(1.1);
+            background: rgba(30,136,229,0.1);
+        }
+
+    /* OCUPADO */
+    .ocupado {
+        background: #e53935;
+        border: none;
+        cursor: not-allowed;
+    }
+
+    /* INPUT */
+    input {
+        display: none;
+    }
+
+        /* SELECCIONADO */
+        input:checked + span {
+            background: #0d47a1;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: block;
+        }
+
+    /* LEYENDA */
+    .leyenda {
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: #444;
+    }
+
+    .circulo {
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+    }
+
+    .disponible {
+        border: 2px solid #1e88e5;
+    }
+
+    .ocupada {
+        background: #e53935;
+    }
+
+    .seleccionada {
+        background: #0d47a1;
+    }
+
+    /* BOTON */
+    .botones {
+        margin-top: 25px;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        background: linear-gradient(135deg, #4a7cff, #2962ff);
+        color: white;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        /* HOVER BOTON */
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(74,124,255,0.4);
+        }
+
+    /* CONTADOR */
+    #contador {
+        font-weight: bold;
+        color: #4a7cff;
+    }
+</style>
+
+<div class="cine-container">
+
+    <div class="panel-info">
+
+        <img src="@ViewBag.Imagen" />
+
+        <h3>@ViewBag.Pelicula</h3>
+        <p><strong>SALA:</strong> @ViewBag.Sala</p>
+        <p><strong>FECHA:</strong> @ViewBag.Fecha</p>
+        <p><strong>HORA:</strong> @ViewBag.Hora</p>
+        <hr />
+        <p><strong>Butacas Seleccionadas:</strong></p>
+        <p id="lista-asientos">Ninguno</p>
+
+    </div>
+
+    <div class="sala-container">
+
+        <div class="titulo">ELIGE ASIENTOS</div>
+
+        <div class="pantalla"></div>
+
+        <form method="post" action="/Compra/Confirmar">
+
+            <input type="hidden" name="idFuncion" value="@ViewBag.IdFuncion" />
+
+            <div class="sala">
+
+                @foreach (var a in Model)
+                {
+                    var ocupado = a.Estado == "Ocupado";
+
+                    <label class="asiento @(ocupado ? "ocupado" : "")">
+
+                        @if (!ocupado)
+                        {
+                            <input type="checkbox" name="asientos" value="@a.IdAsiento" onchange="contar()" />
+                        }
+
+                        <span>@a.Numero</span>
+                    </label>
+                }
+
+            </div>
+
+            <div class="leyenda">
+                <div class="item">
+                    <div class="circulo disponible"></div> Disponible
+                </div>
+                <div class="item">
+                    <div class="circulo ocupada"></div> Ocupada
+                </div>
+                <div class="item">
+                    <div class="circulo seleccionada"></div> Seleccionada
+                </div>
+            </div>
+
+            <div class="botones">
+                <button class="btn">Comprar</button>
+            </div>
+
+        </form>
+
+    </div>
 
 </div>
+
+<script>
+    function contar() {
+
+        let seleccionados = document.querySelectorAll('input[name="asientos"]:checked');
+
+        let lista = [];
+
+        seleccionados.forEach(x => {
+            let numero = x.parentElement.innerText.trim();
+            lista.push(numero);
+        });
+
+        document.getElementById("lista-asientos").innerText =
+            lista.length > 0 ? lista.join(", ") : "Ninguno";
+    }
+</script>

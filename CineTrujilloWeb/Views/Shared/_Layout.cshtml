@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>@ViewData["Title"]</title>
 
-    <style>
+    <style> 
         body {
             margin: 0;
             background: #eef1f5;
@@ -182,12 +182,18 @@
         }
 
         .funciones-page .card {
-            background: white;
+            background-image: url(https://upload.wikimedia.org/wikipedia/commons/2/2f/Sala_de_cine.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             text-align: center;
+            overflow: hidden;
         }
+
 
         .funciones-page .btn {
             display: inline-block;
@@ -199,49 +205,7 @@
             text-decoration: none;
         }
 
-        /*ASIENTOS */
-        .asientos-page .sala {
-            display: grid;
-            grid-template-columns: repeat(8, 50px);
-            gap: 10px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .asientos-page .asiento {
-            width: 50px;
-            height: 50px;
-            background: #4caf50;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .asientos-page .ocupado {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-
-        .asientos-page input {
-            display: none;
-        }
-
-            .asientos-page input:checked + span {
-                background: #ff9800;
-            }
-
-        .asientos-page .btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #e91e63;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
+      
     </style>
 </head>
 

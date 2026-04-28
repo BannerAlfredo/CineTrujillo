@@ -31,6 +31,7 @@ namespace CineTrujilloWeb.Controllers
             }
 
             HttpContext.Session.SetString("IdUsuario", user.IdUsuario.ToString());
+            HttpContext.Session.SetString("Correo", user.Correo);
 
             return RedirectToAction("Cartelera", "Home");
         }

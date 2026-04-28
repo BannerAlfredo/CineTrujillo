@@ -59,5 +59,16 @@ namespace CineTrujilloWeb.Services
         {
             return await _http.GetFromJsonAsync<List<CompraViewModel>>($"compras/usuario/{idUsuario}");
         }
+        // OBTENER FUNCION POR ID
+        public async Task<Funcion> GetFuncion(int idFuncion)
+        {
+            return await _http.GetFromJsonAsync<Funcion>($"Funciones/{idFuncion}");
+        }
+
+        // OBTENER PELICULA POR ID
+        public async Task<Pelicula> GetPelicula(int idPelicula)
+        {
+            return await _http.GetFromJsonAsync<Pelicula>($"pelicula/{idPelicula}");
+        }
     }
 }

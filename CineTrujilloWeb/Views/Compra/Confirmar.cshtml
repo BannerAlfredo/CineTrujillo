@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .confirm-box {
+        max-width: 500px;
+        margin: 40px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+        .confirm-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .confirm-box p {
+            margin: 8px 0;
+        }
+
+        .confirm-box input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+    .btn-confirm {
+        width: 100%;
+        padding: 12px;
+        background: #4a7cff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
+</style>
+
+<div class="confirm-box">
+
+    <h2>Confirmar Compra</h2>
+
+    <form method="post" action="/Compra/Finalizar">
+
+        <input type="hidden" name="idFuncion" value="@ViewBag.IdFuncion" />
+
+        @foreach (var a in ViewBag.Asientos)
+        {
+            <input type="hidden" name="asientos" value="@a" />
+        }
+
+        <p><strong>PELICULA:</strong> @ViewBag.Pelicula</p>
+        <p><strong>SALA:</strong> @ViewBag.Sala</p>
+        <p><strong>HORA:</strong> @ViewBag.Hora</p>
+        <p><strong>ASIENTOS:</strong> @string.Join(", ", ViewBag.Asientos)</p>
+        <p><strong>TOTAL:</strong> S/ @ViewBag.Total</p>
+
+        <hr />
+
+        <label>Correo</label>
+        <input type="text" value="@ViewBag.Correo" readonly />
+
+        <label>Contraseña</label>
+        <input type="password" name="password" required />
+
+        <label>Tarjeta</label>
+        <input type="text" placeholder="**** **** **** 1234" required />
+
+        <button class="btn-confirm">Confirmar Compra</button>
+
+    </form>
+
+</div>

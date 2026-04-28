@@ -24,5 +24,16 @@ namespace CineTrujilloAPI.Controllers
 
             return Ok(data);
         }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var funcion = await _context.Funciones.FindAsync(id);
+
+            if (funcion == null)
+                return NotFound();
+
+            return Ok(funcion);
+        }
     }
 }

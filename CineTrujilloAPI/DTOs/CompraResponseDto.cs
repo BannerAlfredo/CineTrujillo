@@ -8,5 +8,8 @@
         public string Estado { get; set; }
 
         public List<string> Asientos { get; set; }
+        public string Pelicula { get; set; }
+        public string Sala { get; set; }
+        public DateTime Horario { get; set; }
     }
 }

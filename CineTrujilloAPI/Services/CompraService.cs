@@ -87,8 +87,32 @@ namespace CineTrujilloAPI.Services
 
                 var asientos = await _context.Asientos
                     .Where(a => asientosIds.Contains(a.IdAsiento))
-                    .Select(a => a.Numero)
                     .ToListAsync();
+
+                var numeros = asientos.Select(a => a.Numero).ToList();
+
+                var funcionId = asientos.FirstOrDefault()?.IdFuncion;
+
+                string peliculaNombre = "";
+                string sala = "";
+                DateTime horario = DateTime.Now;
+
+                if (funcionId != null)
+                {
+                    var funcion = await _context.Funciones
+                        .FirstOrDefaultAsync(f => f.IdFuncion == funcionId);
+
+                    if (funcion != null)
+                    {
+                        sala = funcion.Sala;
+                        horario = funcion.Horario;
+
+                        var pelicula = await _context.Peliculas
+                            .FirstOrDefaultAsync(p => p.IdPelicula == funcion.IdPelicula);
+
+                        peliculaNombre = pelicula?.Titulo ?? "";
+                    }
+                }
 
                 resultado.Add(new CompraResponseDto
                 {
@@ -96,7 +120,10 @@ namespace CineTrujilloAPI.Services
                     Fecha = compra.Fecha,
                     Total = compra.Total,
                     Estado = compra.Estado,
-                    Asientos = asientos
+                    Asientos = numeros,
+                    Pelicula = peliculaNombre,
+                    Sala = sala,
+                    Horario = horario
                 });
             }
 
