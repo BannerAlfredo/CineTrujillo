@@ -77,8 +77,14 @@ VetCenter/
 ```
 https://github.com/BannerAlfredo/CineTrujillo.git
 ```
+### 2. Crear  Actualizar la base de datos
+SQL: Creamos la base de datos
+```bash
+CREATE DATABASE CineTrujilloDB;
+USE CineTrujilloDB;
+```
 
-### 2. Configura la cadena de conexión
+### 3. Configura la cadena de conexión
 
 Edita el archivo `appsettings.json` en `CineTrujilloApi`:
 
@@ -88,29 +94,23 @@ Edita el archivo `appsettings.json` en `CineTrujilloApi`:
 },
 ```
 
-### 3. Aplica las migraciones
+### 4. Aplica las migraciones
 
 ```bash
-cd CineTrujilloApi
-dotnet ef database update
-```
-
-### 4. Ejecuta la aplicación
-
-```bash
-Ejecutamos nuevo perfil
-```
-
-### 4. Crear  Actualizar la base de datos
-SQL: Creamos la base de datos
-```bash
-create database CineTrujilloDB
+Add-Migration
 ```
 
 VISUAL STUDIO 2022: Ingresamos a Herramientas, administrador de paquetes NuGut, Consola de Administrador de paquetes luego ingresamos
 ```bash
 Update-Database
 ```
+
+### 5. Ejecuta la aplicación
+
+```bash
+Ejecutamos nuevo perfil
+```
+
 ---
 
 ## 📈 Mejoras futuras:
@@ -122,7 +122,7 @@ Update-Database
 
 ## 🧑‍💻 Autor
 
-Desarrollado por Banner Rodriguez - 
+Desarrollado por Banner Rodriguez - BRAYAN GUEVARA RUIZ
 
 ---
 
