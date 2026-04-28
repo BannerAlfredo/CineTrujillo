@@ -166,7 +166,7 @@ Ejecutamos nuevo perfil
 ## 📈 Mejoras futuras:
 - Detalle de peliculas
 - Ticket de compra
-- Agregar validaciones
+- Agregar validaciones (Descuentos, ofertas entre otrso)
 
 ---
 
