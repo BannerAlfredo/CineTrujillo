@@ -75,7 +75,7 @@ VetCenter/
 
 ### 1️⃣ Clonar el repositorio
 ```
-git clone https://github.com/BannerRodriguez/vetcenter.git
+https://github.com/BannerAlfredo/CineTrujillo.git
 ```
 
 ### 2️⃣ Configurar la base de datos
@@ -101,16 +101,15 @@ dotnet run
 ---
 
 ## 📈 Mejoras futuras:
-- Historial clínico de mascotas
-- Notificaciones de citas
-- Roles avanzados
-- Exportación de reportes
+- Detalle de peliculas
+- Ticket de compra
+- Agregar validaciones
 
 ---
 
 ## 🧑‍💻 Autor
 
-Desarrollado por Banner Rodriguez
+Desarrollado por Banner Rodriguez - 
 
 ---
 
