@@ -48,7 +48,7 @@
 
         <input type="hidden" name="idFuncion" value="@ViewBag.IdFuncion" />
 
-        @foreach (var a in ViewBag.Asientos)
+        @foreach (var a in ViewBag.AsientosIds)
         {
             <input type="hidden" name="asientos" value="@a" />
         }
@@ -56,7 +56,7 @@
         <p><strong>PELICULA:</strong> @ViewBag.Pelicula</p>
         <p><strong>SALA:</strong> @ViewBag.Sala</p>
         <p><strong>HORA:</strong> @ViewBag.Hora</p>
-        <p><strong>ASIENTOS:</strong> @string.Join(", ", ViewBag.Asientos)</p>
+        <p><strong>ASIENTOS:</strong> @string.Join(", ", ViewBag.AsientosNumeros)</p>
         <p><strong>TOTAL:</strong> S/ @ViewBag.Total</p>
 
         <hr />
@@ -68,7 +68,7 @@
         <input type="password" name="password" required />
 
         <label>Tarjeta</label>
-        <input type="text" placeholder="**** **** **** 1234" required />
+        <input type="text" placeholder="**** 1234" required />
 
         <button class="btn-confirm">Confirmar Compra</button>
 

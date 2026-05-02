@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CineTrujilloWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+743b37a6899782e1349514344920da4037196a6e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81295f969a4997c3d4b35d01c4f770ebcb70a8ca")]
 [assembly: System.Reflection.AssemblyProductAttribute("CineTrujilloWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CineTrujilloWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

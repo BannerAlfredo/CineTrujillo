@@ -67,15 +67,17 @@ public class CompraController : Controller
         var funcion = await _api.GetFuncion(idFuncion);
         var pelicula = await _api.GetPelicula(funcion.IdPelicula);
         var todosAsientos = await _api.GetAsientos(idFuncion);
-        var asientosSeleccionados = todosAsientos
+
+        var seleccionados = todosAsientos
             .Where(a => asientos.Contains(a.IdAsiento))
-            .Select(a => a.Numero)
             .ToList();
 
-        ViewBag.IdFuncion = idFuncion;
-        ViewBag.Asientos = asientosSeleccionados;
-        ViewBag.Total = asientos.Count * 15;
+        // ✅ SEPARAR
+        ViewBag.AsientosIds = seleccionados.Select(a => a.IdAsiento).ToList();
+        ViewBag.AsientosNumeros = seleccionados.Select(a => a.Numero).ToList();
 
+        ViewBag.IdFuncion = idFuncion;
+        ViewBag.Total = asientos.Count * 15;
         ViewBag.Correo = correo;
 
         ViewBag.Pelicula = pelicula.Titulo;
@@ -106,8 +108,13 @@ public class CompraController : Controller
 
         var result = await _api.Comprar(dto);
 
-        TempData["msg"] = result;
+        if (!result.Contains("exitosa"))
+        {
+            TempData["Error"] = result;
+            return RedirectToAction("Asientos", new { idFuncion });
+        }
 
+        TempData["msg"] = result;
         return RedirectToAction("MisCompras");
     }
 
